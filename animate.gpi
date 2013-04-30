@@ -1,0 +1,13 @@
+do for [ll=0:2229] {
+    unset key
+    la=ll/10000.;
+    set term png size 1366*2, 768*2;
+    outfile=sprintf("anim-%.4f.png",la);
+    print outfile
+    set output outfile;
+    plot [0:1] [0:1] sprintf("nonperiodic-%.4f-2.data",la) w d lc rgbcolor("red");
+    set output;
+}
+#	sprintf("periodic-%.4f-2.data",la) w p ps 0.2 lc rgbcolor("blue") ,\
+#	 sprintf("periodic-%.4f-1.data",la) w p ps 0.2 lc rgbcolor("green"),\
+#, sprintf("nonperiodic-%.4f-1.data",la) w p ps 0.2 lc rgbcolor("green")
