@@ -8,7 +8,7 @@
 using namespace std;
 double f(int i, double x, double la, double f1fixedpoint)
 {
-    if(i==0 or i==2)
+    if(i==0 or i==2 or i==3)
     {
 	return x-0.1*sin(2.3*M_PI*x-0.2*M_PI);
     }
@@ -20,7 +20,7 @@ double f(int i, double x, double la, double f1fixedpoint)
 }
 inline int digit(double x)
 {
-    return int(x*3);
+    return int(x*4);
 }
 inline double drand(double x)
 {
@@ -43,9 +43,9 @@ inline double mod1(double x)
 }
 main()
 {
-    double lamin=0.089;
+    double lamin=0.0;
     double lamax=0.25;
-    double lastep=0.0001;
+    double lastep=0.01;
     double x;
     double f1fixedpoint=0.1;
     int all_iterations=3E4;
@@ -102,15 +102,15 @@ main()
 	    {
 		curx[k]=xs[k];
 	    }
-	    pastb=0;
+	    pastb=int(b*2)*0.5;
 	    for(j=0;j<all_iterations;j++)
 	    {
 		for(k=0;k<components;k++)
 		{
 		    curx[k]=f(digit(b),curx[k],la,f1fixedpoint);
 		}
-		pastb=pastb/2.+int(b*2)*0.5;
 		b=mod1(b*2+drand(1E-10));
+		pastb=pastb/2.+int(b*2)*0.5;
 		for(k=0;k<components;k++)
 		{
 		    if(j>all_iterations-iterations_to_show)
