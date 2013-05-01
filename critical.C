@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
@@ -9,17 +10,18 @@
 using namespace std;
 main()
 {
-    double lamin=0.13;
+    double lamin=0.15;
     double lamax=0.16;
     double lastep=0.01;
     double precision=1E-9;
     double x;
     double f1fixedpoint=0.1;
     double la;
-    int all_iterations=1E7;
+    int all_iterations=1E9;
     int i;
     double xthreshold=0.2;
     bool destroyed;
+    double b;
 
     while(lamax-lamin>precision)
     {
@@ -37,12 +39,16 @@ main()
 		break;
 	    }
 	}
+	cout.precision(16);
+	cout << "Lambda = " << la;
 	if(destroyed)
 	{
+	    cout << ", destroyed" << endl;
 	    lamax=la;
 	}
 	else
 	{
+	    cout << ", attractor persists" << endl;
 	    lamin=la;
 	}
     }
