@@ -9,12 +9,11 @@
 using namespace std;
 main()
 {
-    double lamin=0.12;
-    double lamax=0.13;
-    double lastep=0.001;
+    double lamin=0.6;
+    double lamax=0.7;
+    double lastep=0.01;
     double x;
     double xmin,xmax;
-    double f1fixedpoint=0.1;
     int all_iterations=1E6;
     int bpoints=250;
     int pastpoints=250;
@@ -49,7 +48,7 @@ main()
 		x=xmid=(xmax+xmin)/2.;
 		for(j=0;j<all_iterations;j++)
 		{
-		    x=f(digit(b),x,la,f1fixedpoint);
+		    x=f(digit(b),x,la);
 		    b=mod1(b*2+drand(1E-10));
 		}
 		if(x>0.5)

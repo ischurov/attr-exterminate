@@ -9,8 +9,8 @@
 using namespace std;
 main()
 {
-    double lamin=0.65;
-    double lamax=0.75;
+    double lamin=0.6;
+    double lamax=0.7;
     double lastep=0.01;
     double x;
     int all_iterations=3E7;
