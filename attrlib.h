@@ -5,7 +5,7 @@
 
 #ifndef ATTRLIB_H
 #define ATTRLIB_H
-inline double f(int i, double x, double la, double f1fixedpoint)
+inline double f(int i, double x, double la)
 {
     if(i==0)
     {
