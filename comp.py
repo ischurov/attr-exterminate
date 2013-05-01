@@ -75,7 +75,7 @@ def bisect(f,xmin,xmax,delta):
 
 
 
-returns=['0','01','10']
+returns=['0','10','100','1000','10000']
 transitions=['0','1','01','10']
 sp=SkewProduct()
 xstep=0.01
@@ -90,9 +90,9 @@ for la in frange2(0,0.5,0.001):
 	fp=open('fixedpoints-{0}.data'.format(word),'a')
 	fp.write(", ".join(map(str,[la]+fixedpoints))+"\n")
 	fp.close()
-	for tr in transitions:
-	    if is_admissible(word+tr):
-		fp=open('fixedpoints-comp-{0}-{1}.data'.format(word,tr),'a')
-		ftrans=sp.comp(tr)
-		fp.write(", ".join([str(la)]+[str(ftrans(x)) for x in fixedpoints])+"\n")
-		fp.close()
+#	for tr in transitions:
+#	    if is_admissible(word+tr):
+#		fp=open('fixedpoints-comp-{0}-{1}.data'.format(word,tr),'a')
+#		ftrans=sp.comp(tr)
+#		fp.write(", ".join([str(la)]+[str(ftrans(x)) for x in fixedpoints])+"\n")
+#		fp.close()

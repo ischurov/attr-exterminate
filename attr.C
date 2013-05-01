@@ -4,53 +4,19 @@
 #include <fstream>
 #include <time.h>
 #include <stdlib.h>
+#include "attrlib2.h"
 
 using namespace std;
-double f(int i, double x, double la, double f1fixedpoint)
-{
-    if(i==0 or i==2 or i==3)
-    {
-	return x-0.1*sin(2.3*M_PI*x-0.2*M_PI);
-    }
-    else if(i==1)
-    {
-	return (x-f1fixedpoint)*(1-la)+f1fixedpoint;
-    }
-    assert(false);
-}
-inline int digit(double x)
-{
-    return int(x*4);
-}
-inline double drand(double x)
-{
-	return rand()/(((double)RAND_MAX + 1) / x);
-}
-inline double mod1(double x)
-{
-	if(x>=0 && x<1)
-	{
-		return x;
-	}
-	if(x>=1)
-	{
-		return x-int(x);
-	}
-	if(x<1)
-	{
-		return x-int(x)+1;
-	}
-}
 main()
 {
-    double lamin=0.0;
-    double lamax=0.25;
-    double lastep=0.01;
+    double lamin=0.1548;
+    double lamax=0.15484;
+    double lastep=0.00001;
     double x;
     double f1fixedpoint=0.1;
-    int all_iterations=3E4;
-    int iterations_to_show=1E2;
-    int trajectories=500;
+    int all_iterations=3E7;
+    int iterations_to_show=1E3;
+    int trajectories=10;
     int period=1;
     int denom=(1<<period)-1;
     int numerator;
@@ -70,10 +36,10 @@ main()
     {
 	for(k=0; k<components; k++)
 	{
-	    sprintf(filename,"periodic-%.4f-%i.data",la,k);
+	    sprintf(filename,"periodic-%.5f-%i.data",la,k);
 	    periodicattr[k].open(filename);
 	    periodicattr[k].precision(8);
-	    sprintf(filename,"nonperiodic-%.4f-%i.data",la,k);
+	    sprintf(filename,"nonperiodic-%.5f-%i.data",la,k);
 	    nonperiodicattr[k].open(filename);
 	    nonperiodicattr[k].precision(8);
 	}
