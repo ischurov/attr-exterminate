@@ -19,7 +19,7 @@ inline double f(int i, double x, double la, double f1fixedpoint)
 }
 inline int digit(double x)
 {
-    return int(x*2);
+    return int(x*4);
 }
 inline double drand(double x)
 {
