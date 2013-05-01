@@ -67,15 +67,15 @@ main()
 	    {
 		curx[k]=xs[k];
 	    }
-	    pastb=int(b*2)*0.5;
+	    pastb=0;
 	    for(j=0;j<all_iterations;j++)
 	    {
 		for(k=0;k<components;k++)
 		{
 		    curx[k]=f(digit(b),curx[k],la);
 		}
-		b=mod1(b*2+drand(1E-10));
 		pastb=pastb/2.+int(b*2)*0.5;
+		b=mod1(b*2+drand(1E-10));
 		for(k=0;k<components;k++)
 		{
 		    if(j>all_iterations-iterations_to_show)
